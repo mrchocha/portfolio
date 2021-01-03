@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+.Skills {
+  position: relative;
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+}
+
+.d15 {
+  position: absolute;
+  top: -9vh;
+  right: -12vw;
+  opacity: 0.5;
+}
+.d15 > img {
+  width: 30vw;
+}
+.skill__d4 {
+  position: absolute;
+  z-index: 2;
+  right: 0vw;
+  top: 28vh;
+  opacity: 0.7;
+}
+.skill__d4 > img {
+  width: 5vw;
+}
+.d16 {
+  position: absolute;
+  z-index: -1;
+  left: 5vw;
+  top: 40vh;
+  opacity: 0.7;
+}
+.d16 > img {
+  width: 15vw;
+  transform: rotate(0deg);
+}
+.text__05 {
+  position: absolute;
+  top: 5vh;
+  left: 10vw;
+  font-size: 8vw;
+  font-family: "Bebas Neue", cursive;
+  opacity: 0.5;
+  line-height: 12vh;
+  padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .Skills {
+    overflow-x: hidden;
+  }
+  .text__05 {
+    top: 0vh;
+    left: 22vw;
+  }
+  .holder {
+    position: absolute;
+    top: 20vh;
+  }
+  .d15 {
+    right: -25vw;
+  }
+  .d15 > img {
+    width: 70vw;
+  }
+  .d16 > img {
+    opacity: 0.5;
+    width: 30vw;
+    z-index: 0;
+  }
+  .skill__d4 {
+    top: 20vh;
+    right: -20vw;
+  }
+  .skill__d4 > img {
+    width: 30vw;
+  }
+}

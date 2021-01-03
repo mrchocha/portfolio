@@ -1,0 +1,44 @@
+{
+    "projects":[
+        {
+            "name":"Audio Streaming in c",
+            "compney_name": "Ahmedabad University",
+            "tool_technologies":["C","Sockets","libvlc","pthread","Github"],
+            "stars":3,
+            "description":"Audio streaming using customized protocol to stream the audio from server to client with added reliablity.",
+            "link": "https://github.com/mrchocha/Audio-Streaming-in-C"
+        },
+        {
+            "name":"MyPclub",
+            "compney_name": "Ahmedabad University",
+            "tool_technologies":["Django","PostgreSQL","HTML","CSS","Js","Particles.js","AOS","Bootstrap","Github","Heroku","Jquery"],
+            "stars":3,
+            "description": "Fully responsive webApp designed for programming club Ahmedabad University to handle notification,resources,admins,events etc. ",
+            "link": "https://github.com/mrchocha/Mypclub"
+        },
+        {
+            "name":"PClub CP Web",
+            "compney_name": "Ahmedabad University",
+            "tool_technologies":["Django","SQLite","HTML","CSS","Js","AOS","Bootstrap","Github","Heroku","Jquery"],
+            "stars":3,
+            "description": "A full fledged working website made using django framework aimed at able to show list of Practice Questions for enhancing Competitive Coding skills and rank the registered users based on the number of Questions solved by them. Specific ranks are not given, so that it encourages students to not secure good rank but allowing them to focus more on…",
+            "link": "https://github.com/mrchocha/PClub-CP-Web"
+        },
+        {
+            "name":"Find The Path Game",
+            "compney_name": "Ahmedabad University",
+            "tool_technologies":["java","javafx","MySQL","CSS","xml","Github","Djakarta's shortest "],
+            "stars":2,
+            "description": "Player needs to find the path between Green(Start) and Redpoint(End) avoiding the Gray points(Walls), at the end, the user will be provided shortest path by 'Djakarta's shortest pathfinding algorithm' and based on comparison Score will be given. Player also can make level and store it. High score table option is also provided along with how to play option.",
+            "link": "https://github.com/mrchocha/Find-The-Path-Game"
+        },
+        {
+            "name":"RPMS",
+            "compney_name": "Ahmedabad University",
+            "tool_technologies":["Reactjs","nodejs","js","CSS","HTML","Github","Bootstrap","PostgreSQL"],
+            "stars":2,
+            "description": "RPMS is management system that stores and manages researh work in university. Many university doesn't have proper portal to maintain research paper's data, so this can fill that gap. It has facility to add your work and it also categorise the paper on the basis of School, Domain of the paper and one can also to maintain its reachability in different schools with students or professors. One can also search the paper based on the paper domain.",
+            "link": "https://github.com/mrchocha/RPMS"
+        }
+    ]
+}

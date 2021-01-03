@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
+
+.Home {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow-anchor: none;
+}
+.my__photo > img {
+  width: 35vw;
+  height: auto;
+  border-radius: 50%;
+}
+.my__photo,
+.home__title {
+  position: absolute;
+}
+.my__photo {
+  top: 18vh;
+  left: 20vw;
+  z-index: 1;
+}
+@keyframes leftright {
+  from {
+    opacity: 0;
+    left: 0vw;
+  }
+  to {
+    opacity: 1;
+    left: 20vw;
+  }
+}
+.home__title {
+  top: 30vh;
+  left: 47vw;
+}
+@keyframes updown {
+  0% {
+    top: 0vh;
+  }
+  100% {
+    top: 30vh;
+  }
+}
+.home__title > div:nth-child(1) {
+  font-size: 5vw;
+  line-height: 10vh;
+  padding-left: 5.2vw;
+  z-index: 0;
+}
+.home__title > div:nth-child(2) {
+  position: relative;
+  font-size: 9vw;
+  line-height: 15vh;
+  z-index: 1;
+  padding-left: 2vw;
+  font-family: "Bebas Neue", cursive;
+}
+.home__title > div:nth-child(3) {
+  line-height: 2vh;
+  padding-left: 21vw;
+  font-weight: 600;
+}
+.d1 {
+  position: relative;
+  left: 60.6vw;
+  top: 13.5vh;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.d3 {
+  position: absolute;
+  left: 18vw;
+  top: 35vh;
+  z-index: 0;
+  opacity: 0.5;
+}
+.d3 > img {
+  width: 25vw;
+}
+.d5 {
+  position: absolute;
+  left: 15vw;
+  top: 25vh;
+  z-index: 0;
+  opacity: 0.5;
+}
+.d5 > img {
+  width: 5vw;
+}
+.mrchocha__text {
+  position: absolute;
+  left: 3vw;
+  font-size: 5vh;
+  top: 50vh;
+  opacity: 0.2;
+  transform: rotate(270deg);
+  font-family: "Roboto Condensed", sans-serif;
+  border-left: solid 10px red;
+  padding-left: 1vh;
+}
+.about__me {
+  position: absolute;
+  left: 50.5vw;
+  top: 75vh;
+  z-index: 2;
+  color: #000000;
+  width: 30vw;
+  border-left: solid 15px rgba(243, 84, 86, 0.8);
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.text__01 {
+  position: absolute;
+  top: 5vh;
+  left: 10vw;
+  font-size: 8vw;
+  font-family: "Bebas Neue", cursive;
+  opacity: 0.5;
+  line-height: 12vh;
+  padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .Home {
+    overflow-x: hidden;
+  }
+  .my__photo {
+    top: 25vh;
+    left: 5vw;
+  }
+  .my__photo > img {
+    width: 80vw;
+  }
+  .home__title {
+    z-index: 1 !important;
+    left: 60vw;
+    top: 38vh;
+  }
+  .home__title > div:nth-child(1) {
+    padding-left: 2vw;
+    line-height: 5vh;
+  }
+  .home__title > div:nth-child(2) {
+    line-height: 7vh;
+    font-size: 15vw;
+  }
+  .about__me {
+    left: 8vw;
+    top: 73vh;
+    width: 80vw;
+    font-size: 4.5vw;
+  }
+  .d1 {
+    top: 22vh;
+    left: 45vw;
+  }
+  .d1 > img {
+    width: 55vw;
+    opacity: 0.5;
+  }
+  .d3 {
+    top: 42vh;
+    left: 0vw;
+  }
+  .d3 > img {
+    width: 50vw;
+    opacity: 0.5;
+  }
+  .d5 {
+    top: 20vh;
+    z-index: 2;
+    left: 10vw;
+  }
+  .d5 > img {
+    width: 20vw;
+    opacity: 0.5;
+  }
+  .d8 {
+    top: 0;
+    right: 0;
+  }
+  .mrchocha__text {
+    font-size: 5vw;
+    left: -10vw;
+    top: 20vh;
+  }
+  .text__01 {
+    top: 0vh;
+    left: 22vw;
+  }
+}

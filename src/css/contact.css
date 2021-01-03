@@ -1,0 +1,105 @@
+.Contact {
+  position: relative;
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+}
+
+.cont__details {
+  position: absolute;
+  top: 30vh;
+  left: 15vw;
+  display: flex;
+  flex-direction: row;
+}
+.cont__card {
+  position: relative;
+  border: solid 1px black;
+  padding: 15px;
+  margin-right: 20px;
+  border-radius: 10px;
+  transition: all 0.5s;
+  min-height: 40vh;
+  min-width: 15vw;
+  background-color: white;
+  cursor: pointer;
+}
+.cont__img {
+  padding-top: 3vh;
+  text-align: center;
+}
+.cont__img > img {
+  width: 10vw;
+}
+.cont__card:hover {
+  transform: scale(1.05, 1.05);
+}
+.copy__rights {
+  position: absolute;
+  top: 95vh;
+  left: 35vw;
+}
+.d17 {
+  position: absolute;
+  top: -15vh;
+  right: -10vw;
+  opacity: 0.5;
+}
+.d17 > img {
+  width: 25vw;
+}
+.text__06 {
+  position: absolute;
+  top: 5vh;
+  left: 10vw;
+  font-size: 8vw;
+  font-family: "Bebas Neue", cursive;
+  opacity: 0.5;
+  line-height: 12vh;
+  padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .Contact {
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow-x: hidden;
+  }
+  .text__06 {
+    top: 0vh;
+    left: 22vw;
+  }
+  .cont__details {
+    flex-wrap: wrap;
+    left: 10vw;
+    top: 20vh;
+  }
+  .cont__card {
+    flex: 0 0 10%;
+    min-height: 20vh;
+    min-width: 30vw;
+    margin-bottom: 3vh;
+  }
+  .cont__img {
+    padding-top: 0vh;
+    padding-bottom: 5vh;
+  }
+  .cont__img > img {
+    width: 20vw;
+  }
+  .copy__rights {
+    top: 83vh;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    left: 0vw;
+  }
+  .d17 {
+    top: -8vh;
+    right: -8vw;
+  }
+  .d17 > img {
+    width: 50vw;
+  }
+}

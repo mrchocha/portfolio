@@ -1,0 +1,139 @@
+body::-webkit-scrollbar {
+  width: 0px; /* width of the entire scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: gray; /* color of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
+}
+
+.Navbar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.Nav_logo {
+  position: absolute;
+  border-radius: 50%;
+  height: auto;
+  width: auto;
+  margin-left: 2.5vw;
+  margin-top: 1vh;
+  z-index: 101;
+}
+.logo__img {
+  width: 5vw;
+}
+.Navbar_wrper {
+  height: 100vh;
+  width: 4.5vw;
+  background-color: black;
+  transition: all 0.5s;
+}
+.navlink__container {
+  padding-top: 33vh;
+  display: flex;
+  flex-direction: column;
+}
+.navlink {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  transition: all 0.4s;
+}
+.link__img {
+  width: 2vw;
+  vertical-align: middle;
+}
+a:link {
+  text-decoration: none;
+}
+.link__name {
+  display: none;
+  color: white;
+  justify-content: space-between;
+}
+
+.active__nav {
+  width: 14vw;
+  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+  border: solid 0px;
+}
+
+.active__nav .link__name {
+  display: inline;
+}
+
+.navlink:hover {
+  color: black;
+  border-left: 0.4vw solid rgba(243, 84, 86, 0.8);
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s;
+}
+.active__navlink {
+  border-left: 0.4vw solid rgba(243, 84, 86, 0.8);
+}
+.active__navlink > img {
+  margin-left: -0.4vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .Navbar_wrper {
+    width: 0;
+  }
+  .active__nav {
+    width: 50vw;
+  }
+
+  .link__img {
+    width: 8.5vw;
+  }
+  .logo__img {
+    width: 17vw;
+  }
+  .navlink {
+    display: none;
+  }
+  .active__nav .navlink {
+    display: inline !important;
+  }
+  .navlink:hover {
+    border-left: 1.5vw solid rgba(243, 84, 86, 0.8);
+  }
+  .swiper__navbar {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    top: -7vh;
+    left: 84vw;
+    background-color: black;
+    color: white;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    z-index: -1;
+    clip-path: circle(50% at 50% 50%);
+    transition: all 0.9s;
+  }
+  .swiper__navbar > img {
+    margin-top: 7vh;
+    margin-left: 3vw;
+    height: 5vh;
+  }
+  .swiper__navbar > svg {
+    margin-left: -3vw;
+    margin-top: 7vh;
+    height: 5vh;
+  }
+  .swiper:hover::after {
+    height: 150px;
+    width: 150px;
+  }
+
+  .active__navlink {
+    border-left: 1.5vw solid rgba(243, 84, 86, 0.8);
+  }
+}

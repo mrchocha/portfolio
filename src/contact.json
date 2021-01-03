@@ -1,0 +1,24 @@
+{
+    "contact":[
+        {
+            "name":"Github",
+            "img":"github",
+            "link":"https://github.com/mrchocha"
+        },
+        {
+            "name":"Instagram",
+            "img":"instagram",
+            "link":"https://www.instagram.com/rahul_chocha4530/"
+        },
+        {
+            "name":"Gmail",
+            "img":"gmail",
+            "link":"mailto:rahul.c@ahduni.edu.in"
+        },
+        {
+            "name":"Linkedin",
+            "img":"linkedin",
+            "link":"https://www.linkedin.com/in/rahul-chocha-14b391179/"
+        }
+    ]
+}

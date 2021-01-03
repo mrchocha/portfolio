@@ -1,0 +1,4 @@
+body {
+  overflow-anchor: none;
+  scroll-behavior: smooth;
+}

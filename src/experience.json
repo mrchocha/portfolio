@@ -1,0 +1,13 @@
+{
+    "experience":[
+        {
+            "type": "Internship",
+            "compney_name": "Beta Murungai Pvt. Ltd.",
+            "duation": "Feb 2020 - Mar 2020",
+            "position": "Web-Devloper",
+            "tool_technologies":["HTML","CSS","Js","Particles.js","AOS","Bootstrap","Github","Heroku","Jquery"],
+            "description": "Fully responsive website designed for Beta Murungai Pvt. Ltd. to explain features as well as motives of product compney with more attractive way.",
+            "link": "https://betamg.in/"
+        }
+    ]
+}
