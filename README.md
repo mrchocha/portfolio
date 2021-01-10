@@ -1,5 +1,5 @@
-# portfolio
-portfolio website for rahul chocha
+# Portfolio
+Portfolio website for Rahul Chocha.
 
 ## photos
 ![alt text](https://github.com/mrchocha/portfolio/blob/main/screenshots/s1.png)
