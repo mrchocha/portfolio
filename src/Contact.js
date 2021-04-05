@@ -62,7 +62,7 @@ class App extends React.Component {
                                 <img src={d17} alt="not found"></img>
                             </div>
                             <div className="text__06" data-aos="fade-right" >
-                                06<span style={{ fontSize: "20px" }}>Contact me</span>
+                                06<span style={{ fontSize: "20px" }}>Connect me</span>
                             </div>
 
                             <div className="copy__rights"> Copyright ©2020 All rights reserved | by Rahul Chocha </div>
