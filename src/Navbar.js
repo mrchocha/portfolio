@@ -69,7 +69,7 @@ class Navbar extends React.Component {
                         </a>
                         <a className="navlink" id="navlink" onClick={(e) => this.nav_link_active(5)} href="#Skills">
                             <img className="link__img" src={skills} alt="img not found"></img>
-                            <span className="link__name"> skills </span>
+                            <span className="link__name"> Skills </span>
                         </a>
                         <a className="navlink" id="navlink" onClick={(e) => this.nav_link_active(6)} href="#Contact">
                             <img className="link__img" src={person} alt="img not found"></img>
