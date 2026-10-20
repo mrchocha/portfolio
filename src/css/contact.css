@@ -1,105 +1,68 @@
-.Contact {
-  position: relative;
-  max-width: 100vw;
-  max-height: 100vh;
-  height: 100vh;
-  width: 100vw;
+.cont__lede {
+  max-width: 56ch;
+  margin: -16px 0 40px;
+  color: var(--ink-soft);
+  font-size: 18px;
 }
-
-.cont__details {
-  position: absolute;
-  top: 30vh;
-  left: 15vw;
-  display: flex;
-  flex-direction: row;
+.cont__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
 }
 .cont__card {
-  position: relative;
-  border: solid 1px black;
-  padding: 15px;
-  margin-right: 20px;
-  border-radius: 10px;
-  transition: all 0.5s;
-  min-height: 40vh;
-  min-width: 15vw;
-  background-color: white;
-  cursor: pointer;
-}
-.cont__img {
-  padding-top: 3vh;
-  text-align: center;
-}
-.cont__img > img {
-  width: 10vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 170px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 .cont__card:hover {
-  transform: scale(1.05, 1.05);
+  border-color: var(--accent);
+  box-shadow: 0 24px 60px -28px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.cont__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: auto;
+}
+.cont__icon {
+  width: 36px;
+  height: 36px;
+  /* The icons are drawn in black; invert them for the dark theme */
+  filter: invert(1);
+}
+.cont__arrow {
+  color: var(--ink-soft);
+  font-size: 20px;
+  transition: transform 0.3s, color 0.3s;
+}
+.cont__card:hover .cont__arrow {
+  transform: rotate(45deg);
+  color: var(--accent);
+}
+.cont__name {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+.cont__host {
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .copy__rights {
-  position: absolute;
-  top: 95vh;
-  left: 35vw;
-}
-.d17 {
-  position: absolute;
-  top: -15vh;
-  right: -10vw;
-  opacity: 0.5;
-}
-.d17 > img {
-  width: 25vw;
-}
-.text__06 {
-  position: absolute;
-  top: 5vh;
-  left: 10vw;
-  font-size: 8vw;
-  font-family: "Bebas Neue", cursive;
-  opacity: 0.5;
-  line-height: 12vh;
-  padding: 0;
-}
-
-@media only screen and (max-width: 600px) {
-  .Contact {
-    max-width: 100vw;
-    max-height: 100vh;
-    overflow-x: hidden;
-  }
-  .text__06 {
-    top: 0vh;
-    left: 22vw;
-  }
-  .cont__details {
-    flex-wrap: wrap;
-    left: 10vw;
-    top: 20vh;
-  }
-  .cont__card {
-    flex: 0 0 10%;
-    min-height: 20vh;
-    min-width: 30vw;
-    margin-bottom: 3vh;
-  }
-  .cont__img {
-    padding-top: 0vh;
-    padding-bottom: 5vh;
-  }
-  .cont__img > img {
-    width: 20vw;
-  }
-  .copy__rights {
-    top: 83vh;
-    padding-left: 25px;
-    padding-right: 25px;
-
-    left: 0vw;
-  }
-  .d17 {
-    top: -8vh;
-    right: -8vw;
-  }
-  .d17 > img {
-    width: 50vw;
-  }
+  margin: 72px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-align: center;
 }

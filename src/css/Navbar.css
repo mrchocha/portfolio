@@ -1,139 +1,127 @@
-body::-webkit-scrollbar {
-  width: 0px; /* width of the entire scrollbar */
-}
-body::-webkit-scrollbar-track {
-  background: transparent; /* color of the tracking area */
-}
-body::-webkit-scrollbar-thumb {
-  background-color: gray; /* color of the scroll thumb */
-  border-radius: 10px; /* roundness of the scroll thumb */
-}
-
 .Navbar {
   position: fixed;
-  z-index: 100;
   top: 0;
   left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
-
-.Nav_logo {
-  position: absolute;
-  border-radius: 50%;
-  height: auto;
-  width: auto;
-  margin-left: 2.5vw;
-  margin-top: 1vh;
-  z-index: 101;
-}
-.logo__img {
-  width: 5vw;
-}
-.Navbar_wrper {
-  height: 100vh;
-  width: 4.5vw;
-  background-color: black;
-  transition: all 0.5s;
-}
-.navlink__container {
-  padding-top: 33vh;
+.Navbar__inner {
+  max-width: 1120px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
-  flex-direction: column;
-}
-.navlink {
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  padding-left: 1vw;
-  transition: all 0.4s;
-}
-.link__img {
-  width: 2vw;
-  vertical-align: middle;
-}
-a:link {
-  text-decoration: none;
-}
-.link__name {
-  display: none;
-  color: white;
+  align-items: center;
   justify-content: space-between;
 }
-
-.active__nav {
-  width: 14vw;
-  clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
-  border: solid 0px;
+.Navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
 }
-
-.active__nav .link__name {
-  display: inline;
+.Navbar__mark {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
 }
-
-.navlink:hover {
-  color: black;
-  border-left: 0.4vw solid rgba(243, 84, 86, 0.8);
-  background-color: rgba(255, 255, 255, 0.3);
-  transition: all 0.3s;
+.Navbar__wordmark {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-.active__navlink {
-  border-left: 0.4vw solid rgba(243, 84, 86, 0.8);
+.Navbar__caret {
+  color: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
 }
-.active__navlink > img {
-  margin-left: -0.4vw;
-}
-
-@media only screen and (max-width: 600px) {
-  .Navbar_wrper {
-    width: 0;
+@media (prefers-reduced-motion: reduce) {
+  .Navbar__caret {
+    animation: none;
   }
-  .active__nav {
-    width: 50vw;
-  }
+}
+.Navbar__links {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+.Navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+.Navbar__link {
+  position: relative;
+  isolation: isolate;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+.Navbar__link:hover {
+  color: var(--ink);
+  background: var(--surface);
+}
+.Navbar__link.is-active {
+  color: var(--accent);
+}
+/* The highlight behind the active link. It slides between links, because each one shares the layoutId. */
+.Navbar__pill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+.Navbar__toggle {
+  display: none;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+}
 
-  .link__img {
-    width: 8.5vw;
+@media only screen and (max-width: 760px) {
+  .Navbar__toggle {
+    display: inline-block;
   }
-  .logo__img {
-    width: 17vw;
-  }
-  .navlink {
+  .Navbar__links {
     display: none;
-  }
-  .active__nav .navlink {
-    display: inline !important;
-  }
-  .navlink:hover {
-    border-left: 1.5vw solid rgba(243, 84, 86, 0.8);
-  }
-  .swiper__navbar {
     position: absolute;
-    -webkit-backface-visibility: hidden;
-    top: -7vh;
-    left: 84vw;
-    background-color: black;
-    color: white;
-    height: 100px;
-    width: 100px;
-    padding: 10px;
-    z-index: -1;
-    clip-path: circle(50% at 50% 50%);
-    transition: all 0.9s;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 24px 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
   }
-  .swiper__navbar > img {
-    margin-top: 7vh;
-    margin-left: 3vw;
-    height: 5vh;
+  .Navbar__links.is-open {
+    display: flex;
   }
-  .swiper__navbar > svg {
-    margin-left: -3vw;
-    margin-top: 7vh;
-    height: 5vh;
+  .Navbar__link {
+    padding: 12px 8px;
+    border-radius: 0;
+    font-size: 15px;
   }
-  .swiper:hover::after {
-    height: 150px;
-    width: 150px;
+  .Navbar__link.is-active {
+    background: none;
   }
-
-  .active__navlink {
-    border-left: 1.5vw solid rgba(243, 84, 86, 0.8);
+  .Navbar__pill {
+    display: none;
   }
 }

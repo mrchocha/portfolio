@@ -1,13 +1,104 @@
 {
-    "experience":[
-        {
-            "type": "Internship",
-            "compney_name": "Beta Murungai Pvt. Ltd.",
-            "duation": "Feb 2020 - Mar 2020",
-            "position": "Web-Devloper",
-            "tool_technologies":["HTML","CSS","Js","Particles.js","AOS","Bootstrap","Github","Heroku","Jquery"],
-            "description": "Designed and Developed a fully responsive website for Beta-Murungai Pvt. Ltd. from scratch using HTML, CSS, and JavaScript. The motive was to advertise the project and company by attractive design",
-            "link": "https://betamg.in/"
-        }
-    ]
+  "experience": [
+    {
+      "type": "Full-time",
+      "compney_name": "Cloudflare",
+      "duation": "Oct 2025 - Present",
+      "position": "Systems Engineer, Bangalore, India",
+      "tool_technologies": [
+        "Go",
+        "Kubernetes",
+        "PostgreSQL",
+        "Terraform",
+        "Grafana",
+        "Sentry",
+        "Node.js",
+        "Cloudflare Workers",
+        "Temporal",
+        "Airflow"
+      ],
+      "description": "",
+      "highlights": [
+        "Architected and developed a high-performance risk evaluation platform in Go to analyze user activities (logins, application access, device posture, etc.) and detect risky behavior. Deployed on Kubernetes, processing over 2 million records per second, with monitoring and alerting using Grafana and Sentry.",
+        "Led the migration of a critical customer-facing application library from a monolith to an independent service that defines and manages gateway policies, deployed on Kubernetes with PostgreSQL, QuicksilverDB and Terraform.",
+        "Developed and deployed an MCP server giving teams streamlined access to internal Airflow data and workflows, built with Node.js, Airflow APIs and Cloudflare Workers. It is currently used in production by multiple teams.",
+        "Developing a control plane platform for infrastructure provisioning and lifecycle management across Cloudflare edge data centers, automating provisioning of bare-metal servers, top-of-rack switches and network infrastructure. Built with Temporal, Salt State, Terraform and Airflow."
+      ],
+      "link": "",
+      "logo": "cloudflare"
+    },
+    {
+      "type": "Full-time",
+      "compney_name": "Lyearn",
+      "duation": "Oct 2022 - June 2025",
+      "position": "Software Engineer II, Remote, India",
+      "tool_technologies": [
+        "Go",
+        "FastAPI",
+        "Qdrant",
+        "FastEmbed",
+        "OpenAI GPT-4o",
+        "Elasticsearch",
+        "Kafka",
+        "Prometheus",
+        "Kubernetes",
+        "Jenkins",
+        "gRPC",
+        "GraphQL"
+      ],
+      "description": "",
+      "highlights": [
+        "Developed a knowledge-based chatbot that lets users interact with internal documents, with a data ingestion pipeline built on FastAPI, Qdrant as the vector store, FastEmbed for embeddings, and the OpenAI GPT-4o model for retrieval.",
+        "Developed an analytics service in Go that delivers data insights through a custom query language, extracting data from Elasticsearch and managing pre- and post-processing workflows.",
+        "Built a service that tracks employee productivity by monitoring Kafka events across microservices and databases, storing metrics in a time-series format for 100K+ active users.",
+        "Developed a job processor in Go for long-running processes with retry mechanisms, and chunked uploads for export jobs that handle cloud provider timeouts (1000+ daily exports).",
+        "Built a Go mono-repository with foundational packages (logger, error handler, DB config, gRPC/GraphQL server, CI/CD) for creating microservices, and migrated 5+ microservices onto it.",
+        "Set up observability to detect memory leaks across services, using pprof to find and fix the causes. Automated release pipelines with Jenkins and Go commands that use the Kubernetes API, saving more than 2 hours of developer effort."
+      ],
+      "link": "",
+      "logo": "lyearn"
+    },
+    {
+      "type": "Intern + Full-time",
+      "compney_name": "Pibit.ai (YC W'21)",
+      "duation": "Jun 2021 - Sept 2022",
+      "position": "Software Engineer, Gurugram, India",
+      "tool_technologies": [
+        "FastAPI",
+        "PostgreSQL",
+        "DynamoDB",
+        "Pydantic",
+        "K6"
+      ],
+      "description": "",
+      "highlights": [
+        "Developed HITL (Human In The Loop), a document verification tool for insurance used by 50+ active users, built with FastAPI and PostgreSQL.",
+        "Redesigned the core product's codebase using FastAPI, PostgreSQL, DynamoDB and Pydantic models, cutting API response time by 23.7%.",
+        "Resolved memory leak, code consistency and code complexity issues. Documented the code and tested it with unit tests and K6 load tests.",
+        "Built a data management service that removed more than 3 hours of manual work per cycle and made data traceable and process-ready."
+      ],
+      "link": "",
+      "logo": "pibit"
+    },
+    {
+      "type": "Internship",
+      "compney_name": "Beta Murungai Pvt. Ltd.",
+      "duation": "Feb 2020 - Mar 2020",
+      "position": "Web Developer",
+      "tool_technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Particles.js",
+        "AOS",
+        "Bootstrap",
+        "Github",
+        "Heroku",
+        "jQuery"
+      ],
+      "description": "Designed and developed a fully responsive website for Beta Murungai Pvt. Ltd. from scratch using HTML, CSS, and JavaScript. The motive was to advertise the project and company with an attractive design.",
+      "highlights": [],
+      "link": "https://betamg.in/"
+    }
+  ]
 }

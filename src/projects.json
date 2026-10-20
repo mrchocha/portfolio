@@ -1,44 +1,167 @@
 {
-    "projects":[
+    "projects": [
         {
-            "name":"Audio Streaming in c",
+            "name": "LSM-Tree (WIP)",
+            "compney_name": "Personal project",
+            "tool_technologies": [
+                "Rust",
+                "WAL",
+                "MemTables",
+                "SSTables",
+                "Bloom Filters"
+            ],
+            "description": "Implementing a Rust-based LSM-Tree storage engine with persistent WAL, MemTables, SSTables, Bloom Filters and compaction, exploring efficient on-disk storage, write amplification, and read/write optimization for distributed systems.",
+            "link": "https://github.com/mrchocha/lsm-tree",
+            "stars": 1
+        },
+        {
+            "name": "Jailer",
+            "compney_name": "Personal project",
+            "tool_technologies": [
+                "Rust",
+                "Linux namespaces",
+                "cgroups",
+                "Unix sockets"
+            ],
+            "description": "A lightweight container runtime in Rust, implementing Linux namespace isolation (PID, network, mount and UTS), cgroup-based resource limits, filesystem isolation, and Unix domain socket-based daemon communication.",
+            "link": "https://github.com/mrchocha/jailer",
+            "stars": 3
+        },
+        {
+            "name": "R-Raft",
+            "compney_name": "Personal project",
+            "tool_technologies": [
+                "C++",
+                "Raft",
+                "gRPC"
+            ],
+            "description": "An implementation of the Raft distributed consensus algorithm in C++, featuring leader election, log replication, persistent WAL, and gRPC-based inter-node communication for fault-tolerant distributed systems.",
+            "link": "https://github.com/mrchocha/r-raft",
+            "stars": 1
+        },
+        {
+            "name": "Audio Streaming in C",
             "compney_name": "Ahmedabad University",
-            "tool_technologies":["C","Sockets","libvlc","pthread","Github"],
-            "stars":3,
-            "description":"Audio streaming using customized protocol to stream the audio from server to client with added reliablity.",
+            "tool_technologies": [
+                "C",
+                "UDP",
+                "Sockets",
+                "Multithreading"
+            ],
+            "stars": 14,
+            "description": "Streams audio from server to client over UDP using a custom protocol, with sockets and multi-threading for communication and added reliability.",
             "link": "https://github.com/mrchocha/Audio-Streaming-in-C"
         },
         {
-            "name":"MyPclub",
-            "compney_name": "Ahmedabad University",
-            "tool_technologies":["Django","PostgreSQL","HTML","CSS","Js","Particles.js","AOS","Bootstrap","Github","Heroku","Jquery"],
-            "stars":3,
-            "description": "Fully responsive webApp designed for programming club Ahmedabad University to handle notification,resources,admins,events etc. ",
-            "link": "https://github.com/mrchocha/Mypclub"
+            "name": "Packet Sniffer",
+            "compney_name": "Personal project",
+            "tool_technologies": [
+                "C++",
+                "macOS utun",
+                "ICMP"
+            ],
+            "description": "A packet-sniffing utility in C++ using macOS utun (TUN) interfaces to capture and inspect network traffic at the packet level, with ICMP packet capture and analysis.",
+            "link": "https://github.com/mrchocha/network-experiments/tree/main/packet-sniffer",
+            "stars": 0
         },
         {
-            "name":"PClub CP Web",
+            "name": "Find The Path Game",
             "compney_name": "Ahmedabad University",
-            "tool_technologies":["Django","SQLite","HTML","CSS","Js","AOS","Bootstrap","Github","Heroku","Jquery"],
-            "stars":3,
-            "description": "A full fledged working website made using django framework aimed at able to show list of Practice Questions for enhancing Competitive Coding skills and rank the registered users based on the number of Questions solved by them. Specific ranks are not given, so that it encourages students to not secure good rank but allowing them to focus more on…",
-            "link": "https://github.com/mrchocha/PClub-CP-Web"
-        },
-        {
-            "name":"Find The Path Game",
-            "compney_name": "Ahmedabad University",
-            "tool_technologies":["java","javafx","MySQL","CSS","xml","Github","Djakarta's shortest "],
-            "stars":2,
-            "description": "Player needs to find the path between Green(Start) and Redpoint(End) avoiding the Gray points(Walls), at the end, the user will be provided shortest path by 'Djakarta's shortest pathfinding algorithm' and based on comparison Score will be given. Player also can make level and store it. High score table option is also provided along with how to play option.",
+            "tool_technologies": [
+                "Java",
+                "Dijkstra's algorithm"
+            ],
+            "stars": 2,
+            "description": "A game in Java where the player finds the shortest path from source to destination while avoiding walls. The player's score is calculated by comparing their path with Dijkstra's shortest path algorithm.",
             "link": "https://github.com/mrchocha/Find-The-Path-Game"
+        }
+    ],
+    "openSource": [
+        {
+            "name": "HolmesGPT (CNCF)",
+            "description": "Added configurable webhook alerting for health checks, supporting custom HTTP methods, headers and versioned JSON payloads, and added the --refresh-toolsets flag to refresh toolset status in the ask command.",
+            "links": [
+                {
+                    "label": "#652",
+                    "link": "https://github.com/HolmesGPT/holmesgpt/pull/652"
+                },
+                {
+                    "label": "#2612",
+                    "link": "https://github.com/HolmesGPT/holmesgpt/pull/2612"
+                }
+            ]
         },
         {
-            "name":"RPMS",
-            "compney_name": "Ahmedabad University",
-            "tool_technologies":["Reactjs","nodejs","js","CSS","HTML","Github","Bootstrap","PostgreSQL"],
-            "stars":2,
-            "description": "RPMS is management system that stores and manages researh work in university. Many university doesn't have proper portal to maintain research paper's data, so this can fill that gap. It has facility to add your work and it also categorise the paper on the basis of School, Domain of the paper and one can also to maintain its reachability in different schools with students or professors. One can also search the paper based on the paper domain.",
-            "link": "https://github.com/mrchocha/RPMS"
+            "name": "Tegon.ai (YC S'23)",
+            "description": "Added a custom logger and migrated logs from the old logger, and added a Sentry integration to create and link issues from Sentry to Tegon.",
+            "links": [
+                {
+                    "label": "#213",
+                    "link": "https://github.com/tegonhq/tegon/pull/213"
+                },
+                {
+                    "label": "#209",
+                    "link": "https://github.com/tegonhq/tegon/pull/209"
+                },
+                {
+                    "label": "#220",
+                    "link": "https://github.com/tegonhq/tegon/pull/220"
+                },
+                {
+                    "label": "#272",
+                    "link": "https://github.com/tegonhq/tegon/pull/272"
+                },
+                {
+                    "label": "#273",
+                    "link": "https://github.com/tegonhq/tegon/pull/273"
+                }
+            ]
+        },
+        {
+            "name": "Memphis.dev (CNCF)",
+            "description": "Added API-key based authentication in the broker, Go SDK and gateway.",
+            "links": [
+                {
+                    "label": "#1342",
+                    "link": "https://github.com/memphisdev/memphis/pull/1342"
+                },
+                {
+                    "label": "#126",
+                    "link": "https://github.com/memphisdev/memphis.go/pull/126"
+                },
+                {
+                    "label": "#53",
+                    "link": "https://github.com/memphisdev/memphis-rest-gateway/pull/53"
+                }
+            ]
+        },
+        {
+            "name": "Go-functional",
+            "description": "Added Go linters, pre-commit hooks and small features.",
+            "links": [
+                {
+                    "label": "#78",
+                    "link": "https://github.com/BooleanCat/go-functional/pull/78"
+                },
+                {
+                    "label": "#83",
+                    "link": "https://github.com/BooleanCat/go-functional/pull/83"
+                }
+            ]
+        },
+        {
+            "name": "Other",
+            "description": "Small features and bug fixes in mgod and Dice-DB.",
+            "links": [
+                {
+                    "label": "mgod",
+                    "link": "https://github.com/Lyearn/mgod"
+                },
+                {
+                    "label": "Dice-DB",
+                    "link": "https://github.com/DiceDB/dice"
+                }
+            ]
         }
     ]
 }

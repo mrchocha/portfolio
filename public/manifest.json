@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rahul",
+  "name": "Rahul Chocha - Portfolio",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,13 +18,13 @@
       "sizes": "512x512"
     },
     {
-      "src": "../src/media/R.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0e1014",
+  "background_color": "#0e1014"
 }
