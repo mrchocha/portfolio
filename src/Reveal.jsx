@@ -2,8 +2,8 @@ import { motion, useSpring } from 'motion/react'
 
 // Fades and slides its children in once they scroll into view.
 // Pass a delay to stagger a list of cards. With tilt, the element leans toward the cursor.
-// Other props, such as href or onMouseMove, go to the element.
-export default function Reveal({ children, delay = 0, as = 'div', tilt = false, onMouseMove, onMouseLeave, ...props }) {
+// Other props, such as href, style or onMouseMove, go to the element.
+export default function Reveal({ children, delay = 0, as = 'div', tilt = false, style, onMouseMove, onMouseLeave, ...props }) {
     const Tag = motion[as]
     const rotateX = useSpring(0, { stiffness: 200, damping: 20 })
     const rotateY = useSpring(0, { stiffness: 200, damping: 20 })
@@ -29,7 +29,7 @@ export default function Reveal({ children, delay = 0, as = 'div', tilt = false, 
             {...props}
             onMouseMove={handleMove}
             onMouseLeave={handleLeave}
-            style={tilt ? { rotateX, rotateY, transformPerspective: 900 } : undefined}
+            style={tilt ? { ...style, rotateX, rotateY, transformPerspective: 900 } : style}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}

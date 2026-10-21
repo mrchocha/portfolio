@@ -18,7 +18,7 @@ npm start          # http://localhost:5173/portfolio/
 | --- | --- |
 | `npm start` | Starts the dev server |
 | `npm test` | Runs the test suite with Vitest |
-| `npm run build` | Builds the site into `dist/` |
+| `npm run build` | Builds the site into `dist/` and pre-renders the page into `dist/index.html`, so search engines and link previews see the full content |
 | `npm run preview` | Serves the built site locally |
 | `npm run deploy` | Builds and publishes `dist/` to GitHub Pages |
 

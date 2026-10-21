@@ -6,6 +6,7 @@ import insta from "./media/insta.png"
 import gmail from "./media/gmail.png"
 import linkedin from "./media/linkedin.png"
 import Reveal from "./Reveal";
+import Highlight from "./Highlight";
 
 // Moves the spotlight glow to the cursor position inside the card
 const spotlight = (e) => {
@@ -34,13 +35,13 @@ class App extends React.Component {
             <section className="Contact section" id="contact">
                 <div className="section__inner">
                     <header className="section__head">
-                        <span className="section__num">05</span>
-                        <h2 className="section__title">Connect me</h2>
+                        <span className="section__eyebrow">Contact</span>
+                        <h2 className="section__title">Let's <Highlight>talk</Highlight></h2>
+                        <p className="section__lede">Reach out about roles, projects, open source, or anything in backend and infrastructure.</p>
                     </header>
-                    <p className="cont__lede">Reach out about projects, open source, or anything in backend and infrastructure.</p>
                     <div className="cont__grid">
                         {cont["contact"].map((con, index) => (
-                            <Reveal as="a" key={index} delay={index * 0.08} tilt onMouseMove={spotlight}
+                            <Reveal as="a" key={index} delay={index * 0.08} onMouseMove={spotlight}
                                 className="card spot cont__card" href={con.link}
                                 target={con.link.startsWith("mailto:") ? undefined : "_blank"}
                                 rel="noopener noreferrer">
@@ -53,7 +54,10 @@ class App extends React.Component {
                             </Reveal>
                         ))}
                     </div>
-                    <p className="copy__rights">© {new Date().getFullYear()} Rahul Chocha. All rights reserved.</p>
+                    <footer className="copy__rights">
+                        <span suppressHydrationWarning>© {new Date().getFullYear()} Rahul Chocha</span>
+                        <a href="#home">Back to top ↑</a>
+                    </footer>
                 </div>
             </section>
         );

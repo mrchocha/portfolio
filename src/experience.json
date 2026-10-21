@@ -25,7 +25,17 @@
         "Developing a control plane platform for infrastructure provisioning and lifecycle management across Cloudflare edge data centers, automating provisioning of bare-metal servers, top-of-rack switches and network infrastructure. Built with Temporal, Salt State, Terraform and Airflow."
       ],
       "link": "",
-      "logo": "cloudflare"
+      "logo": "cloudflare",
+      "metrics": [
+        {
+          "value": "2M+/s",
+          "label": "Records evaluated by the risk platform"
+        },
+        {
+          "value": "4",
+          "label": "Major platform projects"
+        }
+      ]
     },
     {
       "type": "Full-time",
@@ -56,7 +66,21 @@
         "Set up observability to detect memory leaks across services, using pprof to find and fix the causes. Automated release pipelines with Jenkins and Go commands that use the Kubernetes API, saving more than 2 hours of developer effort."
       ],
       "link": "",
-      "logo": "lyearn"
+      "logo": "lyearn",
+      "metrics": [
+        {
+          "value": "100K+",
+          "label": "Active users tracked"
+        },
+        {
+          "value": "1000+",
+          "label": "Exports processed daily"
+        },
+        {
+          "value": "5+",
+          "label": "Microservices migrated"
+        }
+      ]
     },
     {
       "type": "Intern + Full-time",
@@ -78,7 +102,21 @@
         "Built a data management service that removed more than 3 hours of manual work per cycle and made data traceable and process-ready."
       ],
       "link": "",
-      "logo": "pibit"
+      "logo": "pibit",
+      "metrics": [
+        {
+          "value": "23.7%",
+          "label": "Faster API responses"
+        },
+        {
+          "value": "50+",
+          "label": "Active users of HITL"
+        },
+        {
+          "value": "3+ hrs",
+          "label": "Manual work saved per cycle"
+        }
+      ]
     },
     {
       "type": "Internship",

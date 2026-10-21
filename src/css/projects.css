@@ -7,42 +7,130 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: border-color 0.25s, box-shadow 0.25s;
+  padding: 0;
+  /* The hover lift uses `translate`, not `transform`: the scroll-in animation drives `transform`,
+     and a CSS transition on it would replay every animation frame and make the cards bump twice */
+  transition: border-color 0.2s, box-shadow 0.3s, translate 0.3s;
 }
 .proj__card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 24px 60px -28px color-mix(in srgb, var(--accent) 40%, transparent);
+  translate: 0 -3px;
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.28);
 }
-/* The first project is the featured one and spans two columns */
+/* Highlighter line that draws across the top on hover */
+.proj__card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--volt);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.proj__card:hover::after {
+  transform: scaleX(1);
+}
+/* Faint dot grid in the top-right corner of each card */
+.proj__dots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 200px;
+  height: 160px;
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 14px 14px;
+  -webkit-mask-image: radial-gradient(circle at top right, #000, transparent 70%);
+  mask-image: radial-gradient(circle at top right, #000, transparent 70%);
+  pointer-events: none;
+}
+.proj__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 24px 0;
+}
+
+/* The first project is the featured one: it spans two columns and shows a diagram */
 .proj__card--wide {
   grid-column: span 2;
 }
+.proj__card--wide .proj__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 28px;
+  flex: 1;
+}
+.proj__card--wide .proj__name {
+  font-size: 26px;
+  letter-spacing: -0.03em;
+}
+
 .proj__top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
+  min-height: 24px;
 }
-.proj__org {
-  padding: 2px 10px;
-  border: 1px solid var(--line);
-  border-radius: 9999px;
+.proj__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 3px;
   color: var(--ink-soft);
   font-family: var(--mono);
   font-size: 12px;
+}
+.proj__lang-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.proj__badges {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.proj__wip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 9px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--volt) 30%, transparent);
+  color: #4d5a00;
+  font-size: 12px;
+  font-weight: 500;
+}
+.proj__wip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7d8f00;
 }
 .proj__stars {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding: 2px 9px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: var(--surface);
   color: var(--ink-soft);
   font-family: var(--mono);
   font-size: 12px;
 }
 .proj__stars img {
-  width: 16px;
-  height: 16px;
-  filter: invert(1);
+  width: 13px;
+  height: 13px;
+  opacity: 0.7;
 }
 .proj__name {
   margin: 4px 0 0;
@@ -50,63 +138,219 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 1.3;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 .proj__desc {
-  flex: 1;
-  margin: 0;
+  margin: 8px 0 0;
   color: var(--ink-soft);
   font-size: 15px;
 }
 .proj__tools {
-  margin-top: 4px;
+  margin-top: auto;
+  padding-top: 8px;
 }
-.proj__card .link-arrow {
-  margin-top: 4px;
+.proj__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.proj__repo {
+  overflow: hidden;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.proj__foot .link-arrow {
+  flex: 0 0 auto;
+}
+/* The whole card is clickable through the GitHub link */
+.proj__foot .link-arrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
-/* Open source */
-.oss__count {
-  margin: 8px 0 0;
-  color: var(--ink-soft);
-  font-family: var(--mono);
-  font-size: 13px;
-}
-.oss__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-}
-.oss__card {
+/* Last tile: points to the rest of the repositories on GitHub */
+/* Stacked and centred when it fills part of a row; laid out in a line when it takes a whole row */
+.proj__more {
+  grid-column: span var(--span, 3);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: border-color 0.25s;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 36px 28px;
+  text-align: center;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s;
 }
-.oss__card:hover {
-  border-color: var(--accent);
+.proj__more--row {
+  flex-direction: row;
+  gap: 24px;
+  text-align: left;
 }
-.oss__name {
-  font-family: var(--mono);
-  font-size: 14px;
+.proj__more:hover {
+  border-color: var(--ink-faint);
+  background: rgba(255, 255, 255, 0.5);
+}
+/* Three stacked cards that fan out on hover */
+.proj__more-stack {
+  position: relative;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+}
+.proj__more-stack span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 6px 16px -10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.proj__more-stack span:nth-child(1) {
+  transform: rotate(-10deg) translate(-6px, 2px);
+}
+.proj__more-stack span:nth-child(2) {
+  transform: rotate(6deg) translate(5px, 1px);
+}
+.proj__more:hover .proj__more-stack span:nth-child(1) {
+  transform: rotate(-18deg) translate(-12px, 4px);
+}
+.proj__more:hover .proj__more-stack span:nth-child(2) {
+  transform: rotate(14deg) translate(12px, 2px);
+}
+.proj__more-stack img {
+  width: 26px;
+  height: 26px;
+}
+.proj__more-text {
+  display: grid;
+  max-width: 44ch;
+  gap: 4px;
+  min-width: 0;
+}
+.proj__more-title {
+  font-size: 19px;
   font-weight: 600;
-  color: var(--accent);
+  letter-spacing: -0.02em;
 }
-.oss__desc {
-  flex: 1;
+.proj__more-desc {
   color: var(--ink-soft);
   font-size: 14px;
 }
-.oss__links {
-  margin-top: 4px;
+.proj__more-cta {
+  flex: 0 0 auto;
 }
-.oss__links .chip {
-  text-decoration: none;
+.proj__more--row .proj__more-text {
+  flex: 1;
+  max-width: none;
+}
+.proj__more:hover .proj__more-cta {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--surface);
+}
+
+/* LSM-tree diagram: writes land in the MemTable and flush down into wider levels */
+.lsm {
+  align-self: center;
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+.lsm__row {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+.lsm__label {
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.lsm__blocks {
+  display: flex;
+  gap: 4px;
+}
+.lsm__block {
+  flex: 1;
+  height: 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  background: var(--surface);
+}
+.lsm__block--mem {
+  flex: 0 0 34%;
+  border-color: #a6b81c;
+  background: var(--volt);
+  animation: lsm-write 2.4s ease-in-out infinite;
+}
+@keyframes lsm-write {
+  0%, 100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--volt) 0%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--volt) 35%, transparent);
+  }
+}
+.lsm__row--wal .lsm__block {
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--ink-faint);
+  border-color: var(--ink-faint);
+}
+.lsm__flush {
+  margin-left: 76px;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .proj__more-stack span {
+    transition: none;
+  }
+  .lsm__block--mem {
+    animation: none;
+  }
+  .proj__card:hover {
+    translate: none;
+  }
 }
 
 @media only screen and (max-width: 900px) {
   .proj__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media only screen and (max-width: 900px) {
+  /* Two columns here, so the "more" tile always takes a full row */
+  .proj__more {
+    grid-column: 1 / -1;
+  }
+  .proj__card--wide .proj__main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -115,5 +359,15 @@
   }
   .proj__card--wide {
     grid-column: auto;
+  }
+  .proj__body {
+    padding: 20px 20px 0;
+  }
+  .proj__foot {
+    padding: 12px 20px;
+  }
+  /* The "Personal project" part is dropped on phones to keep the top row on one line */
+  .proj__org {
+    display: none;
   }
 }

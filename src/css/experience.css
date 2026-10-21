@@ -1,134 +1,451 @@
-/* Vertical timeline: the line draws in on scroll, each role gets a node */
-.exp__timeline {
-  position: relative;
+/* Career card pinned on the left while every role scrolls past on the right */
+.exp__layout {
   display: grid;
-  gap: 24px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.exp__line {
-  position: absolute;
-  top: 34px;
-  bottom: 34px;
-  left: 7px;
-  width: 1px;
-  background: linear-gradient(var(--accent), var(--line) 70%);
-  transform-origin: top;
-}
-.exp__item {
-  position: relative;
-  display: grid;
-  grid-template-columns: 16px minmax(0, 1fr);
-  gap: 24px;
-}
-.exp__node {
-  position: relative;
-  z-index: 1;
-  width: 16px;
-  height: 16px;
-  margin-top: 26px;
-  border: 2px solid var(--line);
-  border-radius: 50%;
-  background: var(--bg);
-}
-.exp__node--current {
-  border-color: var(--accent);
-  background: var(--accent);
-  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent);
+  grid-template-columns: 320px minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
 }
 
-.exp__card {
-  padding: 28px;
-  transition: border-color 0.25s, box-shadow 0.25s;
+.exp__side {
+  position: sticky;
+  top: 96px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 20px 40px -28px rgba(0, 0, 0, 0.2);
 }
-.exp__card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 24px 60px -28px color-mix(in srgb, var(--accent) 40%, transparent);
-}
-.exp__top {
+.exp__side-head {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.exp__type {
-  padding: 2px 10px;
-  border: 1px solid var(--line);
-  border-radius: 9999px;
-  color: var(--accent);
+  align-items: center;
+  margin-bottom: 6px;
+  padding: 10px 12px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-faint);
   font-family: var(--mono);
   font-size: 12px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
 }
-.exp__duration {
-  color: var(--ink-soft);
-  font-family: var(--mono);
-  font-size: 13px;
+.exp__side-head span:first-child::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  vertical-align: 1px;
+  background: var(--volt);
 }
-.exp__company-row {
+.exp__side-foot {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 14px;
-  margin-top: 16px;
+  margin-top: 6px;
+  padding: 14px 12px 8px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
 }
+.exp__side-foot:hover {
+  color: var(--ink);
+}
+
+.exp__tabs {
+  position: relative;
+  display: grid;
+  gap: 2px;
+}
+.exp__tab {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.exp__tab:hover,
+.exp__tab.is-active {
+  color: var(--ink);
+}
+/* Soft panel behind the selected company. It slides between tabs, because each one shares the layoutId. */
+.exp__tab-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+/* Timeline segment from this logo down to the next one.
+   JS sets --p from 0 to 1 as you read through this role, which fills it in. */
+.exp__tab-line {
+  position: absolute;
+  top: 54px;
+  bottom: -8px;
+  left: 29px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+.exp__tab-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleY(var(--p, 0));
+  transform-origin: top;
+}
+
+.exp__tab-text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  gap: 1px;
+}
+.exp__tab-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.exp__tab-name {
+  overflow: hidden;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.exp__tab-tenure {
+  flex: 0 0 auto;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 11px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.exp__tab.is-active .exp__tab-tenure {
+  background: var(--volt);
+  color: var(--volt-ink);
+}
+.exp__tab-role {
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.exp__tab-dates {
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 11.5px;
+}
+
 .exp__logo {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border: 1px solid var(--line);
-  background: var(--surface-2);
-  color: var(--accent);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
   font-family: var(--mono);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
 }
 .exp__logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
+/* Logos in the list are grey until their role is the one being read */
+.exp__tab .exp__logo {
+  transition: box-shadow 0.3s;
+}
+.exp__tab .exp__logo img {
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter 0.3s, opacity 0.3s;
+}
+.exp__tab:hover .exp__logo img,
+.exp__tab.is-active .exp__logo img {
+  filter: none;
+  opacity: 1;
+}
+.exp__tab.is-active .exp__logo {
+  box-shadow: 0 0 0 3px var(--surface-2), 0 0 0 5px var(--volt);
+}
+
+/* Roles */
+.exp__roles {
+  display: grid;
+  gap: 24px;
+}
+.exp__role {
+  padding: 36px;
+  scroll-margin-top: 96px;
+}
+.exp__role.is-active {
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 40px -24px rgba(0, 0, 0, 0.18);
+}
+.exp__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.exp__type {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 500;
+}
+.exp__type.is-current {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  color: #3d7800;
+}
+.exp__now {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: exp-pulse 2s ease-out infinite;
+}
+@keyframes exp-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+.exp__duration {
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.exp__heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+.exp__heading .exp__logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  font-size: 20px;
+}
 .exp__position {
   margin: 0;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 20px;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
 }
 .exp__company {
-  margin: 0;
+  margin: 2px 0 0;
   color: var(--ink-soft);
+  font-size: 15px;
 }
-.exp__tools {
-  margin-top: 16px;
+
+/* Key numbers pulled from the highlights */
+.exp__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 28px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+.exp__metric {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 2px;
+  padding: 16px 18px;
+}
+.exp__metric + .exp__metric {
+  border-left: 1px solid var(--line);
+}
+.exp__metric dd {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+.exp__metric dt {
+  color: var(--ink-faint);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.exp__desc,
+.exp__highlights {
+  max-width: 72ch;
+  color: var(--ink-soft);
+  font-size: 15px;
 }
 .exp__desc {
-  margin: 4px 0 8px;
-  max-width: 75ch;
+  margin: 24px 0 0;
 }
 .exp__highlights {
   display: grid;
-  gap: 8px;
-  margin: 8px 0 8px;
-  padding-left: 20px;
-  max-width: 75ch;
+  gap: 12px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
 }
-.exp__highlights li::marker {
-  color: var(--accent);
+.exp__highlights li {
+  position: relative;
+  padding-left: 22px;
+}
+/* Small highlighter square in place of a bullet */
+.exp__highlights li::before {
+  content: "";
+  position: absolute;
+  top: 0.62em;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  background: var(--volt);
 }
 
+.exp__stack {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.exp__stack-label {
+  flex: 0 0 auto;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.exp__role .link-arrow {
+  margin-top: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exp__now {
+    animation: none;
+  }
+}
+
+/* On smaller screens the tabs become a row you swipe sideways */
+@media only screen and (max-width: 900px) {
+  .exp__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  /* Pinned under the navbar as a row of pills */
+  .exp__side {
+    top: 64px;
+    z-index: 10;
+    margin: 0 -24px;
+    padding: 10px 24px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--nav-bg);
+    box-shadow: none;
+  }
+  .exp__side-head,
+  .exp__side-foot,
+  .exp__tab-line,
+  .exp__tab-role,
+  .exp__tab-dates,
+  .exp__tab-tenure {
+    display: none;
+  }
+  .exp__tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .exp__tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .exp__tab {
+    flex: 0 0 auto;
+    align-items: center;
+    padding: 8px 14px 8px 8px;
+    gap: 10px;
+  }
+  .exp__tab-bg {
+    background: var(--surface);
+  }
+  .exp__tab .exp__logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+  .exp__tab.is-active .exp__logo {
+    box-shadow: none;
+  }
+  .exp__role {
+    scroll-margin-top: 140px;
+  }
+  .exp__role {
+    padding: 24px 20px;
+  }
+}
 @media only screen and (max-width: 600px) {
-  .exp__card {
-    padding: 20px;
+  .exp__side {
+    top: 60px;
+    margin: 0 -20px;
+    padding: 10px 20px;
+  }
+  .exp__heading .exp__logo {
+    width: 44px;
+    height: 44px;
   }
   .exp__position {
-    font-size: 17px;
+    font-size: 21px;
   }
-  .exp__item {
-    gap: 16px;
+  .exp__metric {
+    padding: 14px;
+  }
+  .exp__metric + .exp__metric {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .exp__metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .exp__stack {
+    flex-direction: column;
+    gap: 10px;
   }
 }

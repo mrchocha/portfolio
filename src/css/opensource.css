@@ -1,0 +1,232 @@
+/* Same grid as the projects: the featured card spans two columns, the rest take one each.
+   Cards reuse the project card styles (.proj__card, .proj__body, .proj__foot). */
+.oss__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.oss__card--featured {
+  grid-column: span 2;
+}
+/* Description on the left, pull requests on the right */
+.oss__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+}
+/* The "see all" tile is a full-width strip under the grid */
+.oss__more {
+  --span: 3;
+}
+.oss__card--featured .proj__name {
+  font-size: 26px;
+  letter-spacing: -0.03em;
+}
+.oss__card .proj__body {
+  padding-bottom: 20px;
+}
+.oss__card--featured .proj__body {
+  padding: 24px;
+}
+
+.oss__avatars {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+.oss__avatar {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-2);
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.oss__avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Two owners: the second avatar sits on top, offset to the bottom right */
+.oss__avatars.is-stacked .oss__avatar {
+  inset: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+}
+.oss__avatars.is-stacked .oss__avatar:first-child {
+  top: 0;
+  left: 0;
+}
+.oss__avatars.is-stacked .oss__avatar:last-child {
+  right: -4px;
+  bottom: -4px;
+  box-shadow: 0 0 0 2px var(--surface);
+}
+
+.oss__tag {
+  padding: 2px 9px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--volt) 30%, transparent);
+  color: #4d5a00;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Featured card: a small panel listing its pull requests, like a GitHub list */
+.oss__spotlight {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+.oss__spotlight-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+}
+.oss__spotlight-head .oss__icon {
+  color: var(--accent);
+}
+.oss__count {
+  margin-left: auto;
+  min-width: 22px;
+  padding: 0 7px;
+  border-radius: 9999px;
+  background: var(--volt);
+  color: var(--volt-ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+}
+.oss__prs {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.oss__prs li {
+  min-width: 0;
+}
+.oss__prs li + li {
+  border-top: 1px solid var(--line);
+}
+.oss__pr {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 14px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.oss__pr:hover {
+  background: var(--surface-2);
+}
+.oss__pr-num {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+}
+.oss__pr-repo {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.oss__pr-arrow {
+  margin-left: auto;
+  color: var(--ink-faint);
+  transition: color 0.2s, transform 0.2s;
+}
+.oss__pr:hover .oss__pr-arrow {
+  color: var(--ink);
+  transform: translate(2px, -2px);
+}
+
+.oss__foot-count {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 500;
+}
+.oss__foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.oss__foot-links .chip {
+  margin: 0;
+}
+.oss__link {
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+.oss__link:hover {
+  border-color: #a6b81c;
+  background: var(--volt);
+  color: var(--volt-ink);
+}
+.oss__icon {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media only screen and (max-width: 900px) {
+  .oss__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .oss__main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .oss__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .oss__card--featured {
+    grid-column: auto;
+  }
+  .oss__card--featured .proj__body {
+    padding: 20px;
+  }
+  .oss__card--featured .proj__name {
+    font-size: 22px;
+  }
+}

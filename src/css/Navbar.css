@@ -1,24 +1,33 @@
+/* Full-width bar: transparent over the hero, a solid white strip once the page scrolls.
+   Solid rather than see-through, so text from the animated cards never shows through it. */
 .Navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
+.Navbar.is-scrolled {
+  border-bottom-color: var(--line);
+  background: var(--surface);
+  box-shadow: 0 8px 24px -20px rgba(0, 0, 0, 0.2);
+}
+/* Content lines up with the 1120px sections below */
 .Navbar__inner {
-  max-width: 1120px;
-  height: 60px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  max-width: 1168px;
+  height: 64px;
   margin: 0 auto;
   padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
+
 .Navbar__logo {
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -26,102 +35,159 @@
   text-decoration: none;
 }
 .Navbar__mark {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   flex: 0 0 auto;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.Navbar__logo:hover .Navbar__mark {
+  transform: rotate(-6deg);
 }
 .Navbar__wordmark {
-  font-family: var(--mono);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
-.Navbar__caret {
-  color: var(--accent);
-  animation: blink 1.1s steps(1) infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .Navbar__caret {
-    animation: none;
-  }
-}
+
+/* Section links in a light track; the active one is a raised white button */
 .Navbar__links {
   display: flex;
-  gap: 4px;
-  margin-left: auto;
-}
-.Navbar__actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 8px;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.04);
 }
 .Navbar__link {
   position: relative;
   isolation: isolate;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
   color: var(--ink-soft);
-  font-family: var(--mono);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s, background-color 0.2s;
+  white-space: nowrap;
+  transition: color 0.2s;
 }
-.Navbar__link:hover {
-  color: var(--ink);
-  background: var(--surface);
-}
+.Navbar__link:hover,
 .Navbar__link.is-active {
-  color: var(--accent);
+  color: var(--ink);
 }
-/* The highlight behind the active link. It slides between links, because each one shares the layoutId. */
+/* The raised button behind the active link. It slides between links, because each one shares the layoutId. */
 .Navbar__pill {
   position: absolute;
   inset: 0;
   z-index: -1;
-  border-radius: 6px;
-  background: var(--surface-2);
-}
-.Navbar__toggle {
-  display: none;
-  padding: 6px 14px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--surface);
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 13px;
-  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
-@media only screen and (max-width: 760px) {
-  .Navbar__toggle {
-    display: inline-block;
+.Navbar__actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.Navbar__cta {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.Navbar__cta span,
+.Navbar__menu-cta span {
+  transition: transform 0.2s;
+}
+.Navbar__cta:hover span,
+.Navbar__menu-cta:hover span {
+  transform: translateX(3px);
+}
+
+/* Two-line menu icon that turns into a cross */
+.Navbar__toggle {
+  display: none;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+}
+.Navbar__toggle span {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.Navbar__toggle span:first-child {
+  transform: translateY(-3.5px);
+}
+.Navbar__toggle span:last-child {
+  transform: translateY(3.5px);
+}
+.Navbar__toggle.is-open span:first-child {
+  transform: rotate(45deg);
+}
+.Navbar__toggle.is-open span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* Dropdown card for small screens */
+.Navbar__menu {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .Navbar__inner {
+    grid-template-columns: 1fr auto;
   }
-  .Navbar__links {
+  .Navbar__links,
+  .Navbar__cta {
     display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    gap: 0;
-    padding: 8px 24px 20px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
   }
-  .Navbar__links.is-open {
-    display: flex;
+  .Navbar__toggle {
+    display: block;
   }
-  .Navbar__link {
-    padding: 12px 8px;
-    border-radius: 0;
+  /* Full-width panel under the bar */
+  .Navbar__menu {
+    display: grid;
+    gap: 2px;
+    padding: 8px 16px 20px;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.25);
+    transform-origin: top center;
+  }
+  .Navbar__menu .Navbar__link {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  .Navbar__menu .Navbar__link.is-active {
+    background: var(--surface-2);
+  }
+  .Navbar__menu-cta {
+    justify-content: center;
+    margin-top: 6px;
+    padding: 12px 16px;
+    border-radius: 10px;
     font-size: 15px;
   }
-  .Navbar__link.is-active {
-    background: none;
+}
+@media only screen and (max-width: 600px) {
+  .Navbar__inner {
+    height: 60px;
+    padding: 0 20px;
   }
-  .Navbar__pill {
-    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .Navbar__mark,
+  .Navbar__toggle span {
+    transition: none;
   }
 }
