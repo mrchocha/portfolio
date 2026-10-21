@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// The site is served from https://mrchocha.github.io/portfolio/
+// The site is served from https://mrchocha.github.io/me/
 export default defineConfig({
-  base: '/portfolio/',
+  base: '/me/',
   plugins: [react()],
   test: {
     environment: 'jsdom',

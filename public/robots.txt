@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://mrchocha.github.io/portfolio/sitemap.xml
+Sitemap: https://mrchocha.github.io/me/sitemap.xml

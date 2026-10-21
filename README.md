@@ -9,7 +9,7 @@ The project needs Node 24 (see `.nvmrc`).
 ```bash
 nvm use            # switch to the Node version in .nvmrc
 npm install
-npm start          # http://localhost:5173/portfolio/
+npm start          # http://localhost:5173/me/
 ```
 
 ## Scripts
@@ -20,7 +20,7 @@ npm start          # http://localhost:5173/portfolio/
 | `npm test` | Runs the test suite with Vitest |
 | `npm run build` | Builds the site into `dist/` and pre-renders the page into `dist/index.html`, so search engines and link previews see the full content |
 | `npm run preview` | Serves the built site locally |
-| `npm run deploy` | Builds and publishes `dist/` to GitHub Pages |
+| `npm run deploy` | Builds and publishes `dist/` to the `gh-pages` branch of [mrchocha/me](https://github.com/mrchocha/me), served at https://mrchocha.github.io/me/ |
 
 ## Editing the content
 
