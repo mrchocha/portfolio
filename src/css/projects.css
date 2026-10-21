@@ -290,6 +290,7 @@
   display: flex;
   gap: 4px;
 }
+/* Each level fills the row; deeper levels hold fewer, larger SSTables */
 .lsm__block {
   flex: 1;
   height: 22px;

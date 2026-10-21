@@ -36,9 +36,9 @@ const repoOf = (link) => new URL(link).pathname.split("/").filter(Boolean).slice
 const LEVELS = [
     { label: "WAL", blocks: 6, className: "lsm__row--wal" },
     { label: "MemTable", blocks: 1, mem: true },
-    { label: "L0", blocks: 2 },
+    { label: "L0", blocks: 8 },
     { label: "L1", blocks: 4 },
-    { label: "L2", blocks: 8 },
+    { label: "L2", blocks: 2 },
 ];
 const LsmDiagram = () => (
     <div className="lsm" aria-hidden="true">
