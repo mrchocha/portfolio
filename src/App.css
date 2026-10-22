@@ -72,18 +72,6 @@ html {
   display: inline-block;
 }
 
-/* Thin bar across the top of the page that fills as you scroll */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 200;
-  background: var(--accent);
-  transform-origin: 0 50%;
-}
-
 /* Spotlight: a soft glow that follows the cursor. JS sets --x and --y on the element. */
 .spot {
   position: relative;

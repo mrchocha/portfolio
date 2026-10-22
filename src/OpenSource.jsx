@@ -6,6 +6,7 @@ import cont from "./contact.json";
 import github from "./media/github_b.png";
 import Reveal from "./Reveal";
 import Highlight from "./Highlight";
+import RepoStars from "./RepoStars";
 
 // Moves the spotlight glow to the cursor position inside the card
 const spotlight = (e) => {
@@ -88,7 +89,10 @@ class App extends React.Component {
                                             <span className={"oss__avatars" + (owners.length > 1 ? " is-stacked" : "")}>
                                                 {owners.map((owner) => <Avatar key={owner} owner={owner} />)}
                                             </span>
-                                            {tag ? <span className="oss__tag">{tag}</span> : ""}
+                                            <span className="proj__badges">
+                                                {tag ? <span className="oss__tag">{tag}</span> : ""}
+                                                <RepoStars links={item.links.map((ref) => ref.link)} />
+                                            </span>
                                         </div>
                                         <div className={featured ? "oss__main" : ""}>
                                         <div>

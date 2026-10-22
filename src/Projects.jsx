@@ -5,6 +5,7 @@ import pro from "./projects.json";
 import github from "./media/github_b.png"
 import Reveal from "./Reveal";
 import Highlight from "./Highlight";
+import RepoStars from "./RepoStars";
 import cont from "./contact.json";
 
 // Moves the spotlight glow to the cursor position inside the card
@@ -96,12 +97,7 @@ class App extends React.Component {
                                             </span>
                                             <span className="proj__badges">
                                                 {wip ? <span className="proj__wip">In progress</span> : ""}
-                                                {proj.stars ?
-                                                    <span className="proj__stars" title={proj.stars + " stars on GitHub"}>
-                                                        <img src={github} alt=""></img>
-                                                        ★ {proj.stars}
-                                                    </span> : ""
-                                                }
+                                                {proj.link ? <RepoStars links={[proj.link]} fallback={proj.stars} /> : ""}
                                             </span>
                                         </div>
                                         {proj.visual === "lsm" && wide ?
